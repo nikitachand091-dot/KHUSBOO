@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PharmaCare – Staff Panel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --main:#1565c0;
+  --dark:#0d47a1;
+  --bg:#f4f7fb;
+  --card:#ffffff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:var(--bg);}
+
+/* LAYOUT */
+.wrapper{
+  display:flex;
+  min-height:100vh;
+  padding-bottom:70px;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:250px;
+  background:var(--dark);
+  color:white;
+  padding:20px;
+}
+.sidebar h2{text-align:center;margin-bottom:25px;}
+.sidebar a{
+  display:block;
+  color:white;
+  text-decoration:none;
+  padding:12px 15px;
+  border-radius:6px;
+  margin:6px 0;
+  cursor:pointer;
+}
+.sidebar a:hover,.sidebar a.active{background:#1565c0;}
+
+/* MAIN */
+.main{flex:1;}
+
+/* HEADER */
+header{
+  background:white;
+  padding:12px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+header h1{color:var(--main);}
+.staff-info{display:flex;align-items:center;gap:15px;}
+.staff-info span{font-weight:600;}
+.staff-info button{
+  background:var(--main);
+  color:white;border:none;
+  padding:6px 14px;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+/* CONTENT */
+.content{padding:30px;}
+
+/* PANELS */
+.panel-section{display:none;}
+.panel-section.active{display:block;}
+
+/* DASHBOARD CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.card h3{color:var(--main);}
+.card p{font-size:18px;font-weight:600;}
+
+/* SECTION BOX */
+.section{
+  background:white;
+  margin-top:25px;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.section h3{color:var(--main);margin-bottom:15px;}
+.section p{line-height:1.7;}
+
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+th,td{
+  border:1px solid #ddd;
+  padding:8px;
+  text-align:center;
+}
+th{background:#e3f2fd;}
+
+/* FORM */
+.form-inline input{
+  padding:8px;
+  margin:5px;
+  border:1px solid #ccc;
+  border-radius:5px;
+}
+.form-inline button{
+  background:var(--main);
+  color:white;border:none;
+  padding:8px 14px;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+/* CHART */
+.chart-box{display:flex;justify-content:center;}
+canvas{max-width:300px;}
+
+/* FIXED FOOTER */
+footer{
+  position:fixed;
+  bottom:0;left:0;
+  width:100%;
+  background:var(--dark);
+  color:white;
+  text-align:center;
+  padding:14px;
+  z-index:1000;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Staff Panel</h2>
+  <a class="active" onclick="showPanel('dashboard',this)">Dashboard</a>
+  <a onclick="showPanel('medicines',this)">View Medicines</a>
+  <a onclick="showPanel('updateStock',this)">Update Stock</a>
+  <a onclick="showPanel('expiry',this)">Expiry List</a>
+  <a onclick="showPanel('billing',this)">Create Sales Bill</a>
+  <a onclick="showPanel('history',this)">Bill History</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<header>
+  <h1>PharmaCare</h1>
+  <div class="staff-info">
+    <span>Staff ID: ST102</span>
+    <button onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<div class="content">
+
+<!-- ================= DASHBOARD ================= -->
+<div id="dashboard" class="panel-section active">
+
+  <div class="cards">
+    <div class="card"><h3>Today’s Sales</h3><p>₹ 3,450</p></div>
+    <div class="card"><h3>Available Stock</h3><p>1,250 Units</p></div>
+    <div class="card"><h3>Expiry Alerts</h3><p>4 Medicines</p></div>
+    <div class="card"><h3>Low Stock Items</h3><p>6 Medicines</p></div>
+  </div>
+
+  <div class="section">
+    <h3>Daily Performance Overview</h3>
+    <p>
+      This dashboard gives staff a quick overview of today’s pharmacy activity.
+      From sales performance to stock availability and expiry alerts, everything
+      important is displayed here so that staff can take immediate action
+      without checking multiple pages.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>Sales Distribution</h3>
+    <div class="chart-box">
+      <canvas id="salesChart" width="300" height="300"></canvas>
+    </div>
+    <p>
+      The chart above shows how today’s sales are divided among different
+      medicine types such as tablets, syrups, injections, and supplements.
+    </p>
+  </div>
+</div>
+
+<!-- ================= MEDICINES ================= -->
+<div id="medicines" class="panel-section">
+  <div class="section">
+    <h3>Medicine Inventory</h3>
+    <p>
+      This section allows staff to view all available medicines along with their
+      stock level, expiry date, and category. It helps staff provide correct
+      information to customers and avoid selling expired products.
+    </p>
+    <table>
+      <tr><th>Name</th><th>Stock</th><th>Expiry</th><th>Category</th><th>Supplier</th></tr>
+      <tr><td>Paracetamol</td><td>150</td><td>12/2026</td><td>Tablet</td><td>ABC Pharma</td></tr>
+      <tr><td>Amoxicillin</td><td>80</td><td>08/2025</td><td>Capsule</td><td>XYZ Labs</td></tr>
+      <tr><td>Cough Syrup</td><td>60</td><td>03/2026</td><td>Syrup</td><td>HealthCare Ltd</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ================= UPDATE STOCK ================= -->
+<div id="updateStock" class="panel-section">
+  <div class="section">
+    <h3>Update Stock</h3>
+    <p>
+      Staff can update medicine quantities when new stock arrives. This feature
+      ensures that the system always shows accurate stock levels, reducing
+      chances of over-selling or shortages.
+    </p>
+    <div class="form-inline">
+      <input type="text" placeholder="Medicine Name">
+      <input type="number" placeholder="Add Quantity">
+      <button>Add Stock</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= EXPIRY ================= -->
+<div id="expiry" class="panel-section">
+  <div class="section">
+    <h3>Expiry Monitoring</h3>
+    <p>
+      This section helps staff track medicines that are close to expiry. Early
+      identification prevents wastage and ensures customer safety.
+    </p>
+    <table>
+      <tr><th>Medicine</th><th>Expiry</th><th>Status</th><th>Action</th></tr>
+      <tr><td>Amoxicillin</td><td>08/2025</td><td>Near Expiry</td><td>Discount / Return</td></tr>
+      <tr><td>Pain Relief Gel</td><td>07/2025</td><td>Near Expiry</td><td>Remove from Shelf</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ================= BILLING ================= -->
+<div id="billing" class="panel-section">
+  <div class="section">
+    <h3>Create Sales Bill</h3>
+    <p>
+      Staff can generate customer bills by entering medicine details and
+      quantity. This helps in maintaining a digital record of all transactions.
+    </p>
+    <div class="form-inline">
+      <input type="text" placeholder="Customer Name">
+      <input type="text" placeholder="Medicine Name">
+      <input type="number" placeholder="Quantity">
+      <input type="number" placeholder="Price">
+      <button>Generate Bill</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HISTORY ================= -->
+<div id="history" class="panel-section">
+  <div class="section">
+    <h3>Customer Bill History</h3>
+    <p>
+      This section stores past billing records so staff can easily check
+      previous transactions, handle returns, or answer customer queries.
+    </p>
+    <table>
+      <tr><th>Bill No</th><th>Customer</th><th>Amount</th><th>Date</th><th>Payment Mode</th></tr>
+      <tr><td>B101</td><td>Rahul</td><td>₹250</td><td>06/01/2026</td><td>Cash</td></tr>
+      <tr><td>B102</td><td>Anita</td><td>₹180</td><td>06/01/2026</td><td>UPI</td></tr>
+      <tr><td>B103</td><td>Ravi</td><td>₹420</td><td>05/01/2026</td><td>Card</td></tr>
+    </table>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+<footer>
+  © 2026 PharmaCare – Staff Panel
+</footer>
+
+<script>
+// NAVIGATION
+function showPanel(id,el){
+  document.querySelectorAll('.panel-section').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// LOGOUT
+function logout(){
+  alert("Logged out successfully!");
+}
+
+// PIE CHART
+function drawChart(){
+  const c=document.getElementById("salesChart");
+  const ctx=c.getContext("2d");
+  const data=[45,25,20,10];
+  const colors=["#1565c0","#42a5f5","#90caf9","#bbdefb"];
+  let total=data.reduce((a,b)=>a+b,0);
+  let start=0;
+  for(let i=0;i<data.length;i++){
+    let slice=(data[i]/total)*2*Math.PI;
+    ctx.beginPath();
+    ctx.moveTo(150,150);
+    ctx.arc(150,150,140,start,start+slice);
+    ctx.fillStyle=colors[i];
+    ctx.fill();
+    start+=slice;
+  }
+}
+drawChart();
+</script>
+
+</body>
+</html>

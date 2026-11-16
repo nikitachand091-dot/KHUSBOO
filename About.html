@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About - PharmaCare</title>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --main:#1565c0;
+  --light:#e3f2fd;
+  --dark:#0d47a1;
+  --text:#333;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins', sans-serif;
+  background:#f5f8fc;
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  background:white;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+header h1{color:var(--main);}
+nav a{
+  margin-left:20px;
+  text-decoration:none;
+  color:#555;
+  font-weight:600;
+}
+nav a:hover{color:var(--main);}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,var(--main),#42a5f5);
+  color:white;
+  padding:70px 20px;
+  text-align:center;
+}
+.hero h2{font-size:34px;margin-bottom:10px;}
+.hero p{font-size:18px;}
+
+/* CONTENT */
+.content{
+  padding:50px 40px;
+  max-width:1000px;
+  margin:auto;
+}
+.section{
+  background:white;
+  padding:30px;
+  margin-bottom:25px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+.section h3{
+  color:var(--main);
+  margin-bottom:10px;
+}
+
+/* VALUES */
+.values{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.value-box{
+  text-align:center;
+}
+.value-box img{
+  width:50px;
+  margin-bottom:10px;
+}
+
+/* BIG FOOTER */
+footer{
+  background:#0d47a1;
+  color:white;
+  margin-top:50px;
+}
+.footer-top{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  padding:40px;
+}
+.footer-box h4{
+  margin-bottom:12px;
+}
+.footer-box p,
+.footer-box a{
+  font-size:14px;
+  color:#ddd;
+  text-decoration:none;
+  display:block;
+  margin:6px 0;
+}
+.footer-box a:hover{color:white;}
+
+.footer-bottom{
+  background:#08306b;
+  text-align:center;
+  padding:12px;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <h1>PharmaCare</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="medicines.html">Medicines</a>
+    <a href="categories.html">Categories</a>
+    <a href="contact.html">Contact</a>
+    <a href="Login.html">Login</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h2>About PharmaCare</h2>
+  <p>Your trusted partner in safe and smart pharmacy information</p>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="content">
+
+  <!-- WHO WE ARE -->
+  <div class="section">
+    <h3>Who We Are</h3>
+    <p>
+      PharmaCare is a modern web-based pharmacy information system designed to
+      make medicine details easily accessible to everyone. Our platform helps
+      users search medicines, check expiry dates, and understand dosage and
+      brand information in a simple and reliable way.
+    </p>
+  </div>
+
+  <!-- OUR MISSION -->
+  <div class="section">
+    <h3>Our Mission</h3>
+    <p>
+      Our mission is to improve healthcare awareness by providing accurate and
+      up-to-date medicine information. We aim to reduce medication errors,
+      promote safe usage, and support pharmacies in delivering better service
+      through digital solutions.
+    </p>
+  </div>
+
+  <!-- OUR VISION -->
+  <div class="section">
+    <h3>Our Vision</h3>
+    <p>
+      We envision a future where every pharmacy operates digitally and every
+      customer can access reliable medicine information anytime, anywhere.
+      PharmaCare strives to become a trusted platform for smart pharmacy
+      management and safe healthcare practices.
+    </p>
+  </div>
+
+  <!-- OUR VALUES -->
+  <div class="section">
+    <h3>Our Core Values</h3>
+    <div class="values">
+
+      <div class="value-box">
+        <img src="https://img.icons8.com/color/96/verified-badge.png"/>
+        <h4>Trust</h4>
+        <p>We provide verified and accurate medicine information.</p>
+      </div>
+
+      <div class="value-box">
+        <img src="https://img.icons8.com/color/96/handshake.png"/>
+        <h4>Care</h4>
+        <p>We care about patient safety and responsible medicine use.</p>
+      </div>
+
+      <div class="value-box">
+        <img src="https://img.icons8.com/color/96/idea.png"/>
+        <h4>Innovation</h4>
+        <p>We use technology to improve pharmacy services.</p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<footer>
+
+  <div class="footer-top">
+
+    <div class="footer-box">
+      <h4>PharmaCare</h4>
+      <p>
+        PharmaCare is a smart pharmacy information system that helps
+        customers access medicine details easily and safely.
+      </p>
+    </div>
+
+    <div class="footer-box">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="medicines.html">Medicines</a>
+      <a href="categories.html">Categories</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-box">
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">FAQs</a>
+    </div>
+
+    <div class="footer-box">
+      <h4>Contact Info</h4>
+      <p>📞 +91 9876543210</p>
+      <p>📧 support@pharmacare.com</p>
+      <p>📍 City Center, India</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 PharmaCare – All Rights Reserved</p>
+  </div>
+
+</footer>
+
+</body>
+</html>

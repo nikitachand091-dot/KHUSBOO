@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login - PharmaCare</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --main:#1565c0;
+  --dark:#0d47a1;
+  --bg:#f5f8fc;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins', sans-serif;
+  background:var(--bg);
+}
+
+/* HEADER */
+header{
+  background:white;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+header h1{color:var(--main);}
+nav a{
+  margin-left:20px;
+  text-decoration:none;
+  color:#555;
+  font-weight:600;
+}
+nav a:hover{color:var(--main);}
+
+/* CONTAINER */
+.auth-container{
+  min-height:80vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* BOX */
+.auth-box{
+  background:white;
+  width:380px;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.12);
+  overflow:hidden;
+}
+
+/* TABS */
+.tabs{
+  display:flex;
+}
+.tabs div{
+  flex:1;
+  text-align:center;
+  padding:12px;
+  cursor:pointer;
+  font-weight:600;
+  background:#e3f2fd;
+}
+.tabs .active{
+  background:var(--main);
+  color:white;
+}
+
+/* FORM */
+.form{
+  padding:25px;
+  display:none;
+}
+.form.active{display:block;}
+
+.form h2{
+  color:var(--main);
+  margin-bottom:15px;
+  text-align:center;
+}
+.form input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+.form button{
+  width:100%;
+  padding:10px;
+  background:var(--main);
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  margin-top:10px;
+}
+.form button:hover{background:var(--dark);}
+
+/* LINKS */
+.links{
+  text-align:center;
+  margin-top:10px;
+}
+.links a{
+  color:var(--main);
+  text-decoration:none;
+  font-size:14px;
+}
+.links a:hover{text-decoration:underline;}
+
+/* FORGOT BOX */
+.forgot-box{
+  display:none;
+  padding:25px;
+}
+.forgot-box h2{
+  color:var(--main);
+  margin-bottom:15px;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>PharmaCare</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="medicines.html">Medicines</a>
+    <a href="categories.html">Categories</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+  </nav>
+</header>
+
+<div class="auth-container">
+
+  <div class="auth-box">
+
+    <!-- TABS -->
+    <div class="tabs">
+      <div id="loginTab" class="active" onclick="showLogin()">Login</div>
+      <div id="registerTab" onclick="showRegister()">Register</div>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div id="loginForm" class="form active">
+      <h2>Login</h2>
+      <input type="text" id="loginUser" placeholder="Username or Email">
+      <input type="password" id="loginPass" placeholder="Password">
+      <button onclick="login()">Login</button>
+
+      <div class="links">
+        <a href="#" onclick="showForgot()">Forgot Password?</a>
+      </div>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="registerForm" class="form">
+      <h2>Register</h2>
+      <input type="text" placeholder="Full Name">
+      <input type="email" placeholder="Email">
+      <input type="text" placeholder="Username">
+      <input type="password" placeholder="Password">
+      <input type="password" placeholder="Confirm Password">
+      <button>Register</button>
+    </div>
+
+    <!-- FORGOT PASSWORD -->
+    <div id="forgotBox" class="forgot-box">
+      <h2>Reset Password</h2>
+      <input type="email" placeholder="Enter your email">
+      <button>Send Reset Link</button>
+
+      <div class="links">
+        <a href="#" onclick="backToLogin()">Back to Login</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function showLogin(){
+  document.getElementById("loginForm").classList.add("active");
+  document.getElementById("registerForm").classList.remove("active");
+  document.getElementById("forgotBox").style.display="none";
+
+  document.getElementById("loginTab").classList.add("active");
+  document.getElementById("registerTab").classList.remove("active");
+}
+
+function showRegister(){
+  document.getElementById("registerForm").classList.add("active");
+  document.getElementById("loginForm").classList.remove("active");
+  document.getElementById("forgotBox").style.display="none";
+
+  document.getElementById("registerTab").classList.add("active");
+  document.getElementById("loginTab").classList.remove("active");
+}
+
+function showForgot(){
+  document.getElementById("loginForm").classList.remove("active");
+  document.getElementById("registerForm").classList.remove("active");
+  document.getElementById("forgotBox").style.display="block";
+}
+
+function backToLogin(){
+  showLogin();
+}
+
+function login(){
+  let u=document.getElementById("loginUser").value;
+  let p=document.getElementById("loginPass").value;
+
+  if(u===""||p===""){
+    alert("Please fill all fields");
+  }else{
+    alert("Welcome "+u+"!");
+  }
+}
+</script>
+
+</body>
+</html>

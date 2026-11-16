@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Categories - PharmaCare</title>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --main:#1565c0;
+  --light:#e3f2fd;
+  --dark:#0d47a1;
+  --text:#333;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins', sans-serif;
+  background:#f5f8fc;
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  background:white;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+header h1{color:var(--main);}
+nav a{
+  margin-left:20px;
+  text-decoration:none;
+  color:#555;
+  font-weight:600;
+}
+nav a:hover{color:var(--main);}
+
+/* PAGE TITLE */
+.page-title{
+  background:linear-gradient(135deg,var(--main),#42a5f5);
+  color:white;
+  text-align:center;
+  padding:50px 20px;
+}
+.page-title h2{font-size:34px;}
+.page-title p{margin-top:8px;font-size:16px;}
+
+/* CONTAINER */
+.container{
+  padding:50px 40px;
+}
+
+/* CATEGORY GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+/* CATEGORY CARD */
+.card{
+  background:white;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  overflow:hidden;
+  transition:transform .2s;
+}
+.card:hover{transform:translateY(-6px);}
+
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+.card-body{
+  padding:18px;
+}
+.card-body h3{
+  color:var(--main);
+  margin-bottom:8px;
+}
+.card-body p{
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* EXTRA INFO */
+.info-section{
+  margin-top:60px;
+  background:white;
+  padding:40px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+.info-section h3{
+  color:var(--main);
+  margin-bottom:15px;
+}
+.info-section ul{
+  margin-left:20px;
+}
+.info-section li{
+  margin:8px 0;
+}
+
+/* FOOTER */
+/* BIG FOOTER */
+footer{
+  background:#0d47a1;
+  color:white;
+  margin-top:50px;
+}
+.footer-top{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  padding:40px;
+}
+.footer-box h4{
+  margin-bottom:12px;
+}
+.footer-box p,
+.footer-box a{
+  font-size:14px;
+  color:#ddd;
+  text-decoration:none;
+  display:block;
+  margin:6px 0;
+}
+.footer-box a:hover{color:white;}
+
+.footer-bottom{
+  background:#08306b;
+  text-align:center;
+  padding:12px;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <h1>PharmaCare</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="medicines.html">Medicines</a>
+    <a href="categories.html">Categories</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+  </nav>
+</header>
+
+<!-- TITLE -->
+<section class="page-title">
+  <h2>Medicine Categories</h2>
+  <p>Explore medicines by type for easy searching</p>
+</section>
+
+<!-- CATEGORIES -->
+<section class="container">
+
+  <div class="grid">
+
+    <!-- 1 -->
+    <div class="card">
+      <img src="https://www.grxstatic.com/4f3rgqwzdznj/6CTxk1o4b2WVDk1GZnmFJ8/f92c92968cbc6b239489ed2796cc83f8/colorful_pills_spilling_out_of_bottle-1064315570.jpg?w=3840&q=99&fm=webp" alt="Tablets">
+      <div class="card-body">
+        <h3>Tablets</h3>
+        <p>
+          Tablets are the most commonly used form of medicine. They are easy
+          to store, easy to carry, and provide accurate dosage. Tablets are
+          widely used for pain relief, fever, infections, and chronic diseases.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <img src="https://www.ismileva.com/wp-content/uploads/2020/01/cough-syrup-300x200.jpg" alt="Syrups">
+      <div class="card-body">
+        <h3>Syrups</h3>
+        <p>
+          Syrups are liquid medicines, mostly given to children and elderly
+          patients who have difficulty swallowing tablets. They are commonly
+          used for cough, cold, fever, and digestive problems.
+        </p>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <img src="https://apthorprx.com/wp-content/uploads/2022/01/apthorp-rx-Ignorance-About-Injections-Why-Some-Medications-Are-In-Shot-Form.jpg" alt="Injections">
+      <div class="card-body">
+        <h3>Injections</h3>
+        <p>
+          Injections provide quick relief because the medicine directly enters
+          the bloodstream. They are mainly used in emergencies, hospitals, and
+          for serious infections and pain management.
+        </p>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+      <img src="https://tse4.mm.bing.net/th/id/OIP.VUJo3oIOLxnggHrhaONudwHaFT?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Capsules">
+      <div class="card-body">
+        <h3>Capsules</h3>
+        <p>
+          Capsules are easy to swallow and dissolve quickly in the stomach.
+          They are commonly used for antibiotics, vitamins, and supplements.
+        </p>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+      <img src="https://tse4.mm.bing.net/th/id/OIP.utX8SRIZat_etDz8OHfO-wHaE5?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Ointments">
+      <div class="card-body">
+        <h3>Ointments & Creams</h3>
+        <p>
+          These medicines are applied directly on the skin for infections,
+          wounds, burns, allergies, and pain relief. They act quickly on the
+          affected area.
+        </p>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+      <img src="https://health.drmorepen.com/cdn/shop/articles/what-are-health-supplements-and-importance-for-human-body-980782_16300feb-8104-4cfc-85d6-e8a8780c938e.jpg?v=1745654424" alt="Supplements">
+      <div class="card-body">
+        <h3>Vitamins & Supplements</h3>
+        <p>
+          Vitamins and supplements help in improving immunity, energy levels,
+          and overall health. They are often taken for nutritional support.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EXTRA LONG SECTION -->
+  <div class="info-section">
+    <h3>Why Categories Matter</h3>
+    <p>
+      Categorizing medicines helps customers find the right product quickly and
+      easily. Instead of searching every medicine one by one, users can simply
+      choose a category and browse the related medicines. This improves user
+      experience and saves time.
+    </p>
+
+    <h3>Benefits of Category-Based Search</h3>
+    <ul>
+      <li>Easy navigation for customers</li>
+      <li>Quick access to required medicines</li>
+      <li>Better organization of pharmacy stock</li>
+      <li>Reduces chances of confusion</li>
+      <li>Improves overall website usability</li>
+    </ul>
+
+    <h3>Our Promise</h3>
+    <p>
+      PharmaCare ensures that every medicine listed under a category is properly
+      verified and updated. We regularly check expiry dates and stock details so
+      that customers always get accurate information.
+    </p>
+  </div>
+
+</section>
+
+<footer>
+  
+  <div class="footer-top">
+
+    <div class="footer-box">
+      <h4>PharmaCare</h4>
+      <p>
+        PharmaCare is a smart pharmacy information system that helps
+        customers access medicine details easily and safely.
+      </p>
+    </div>
+
+    <div class="footer-box">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="medicines.html">Medicines</a>
+      <a href="categories.html">Categories</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-box">
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">FAQs</a>
+    </div>
+
+    <div class="footer-box">
+      <h4>Contact Info</h4>
+      <p>📞 +91 9876543210</p>
+      <p>📧 support@pharmacare.com</p>
+      <p>📍 City Center, India</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 PharmaCare – All Rights Reserved</p>
+  </div>
+
+</footer>
+
+</body>
+</html>
